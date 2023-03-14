@@ -1,5 +1,8 @@
 {
     "salutation": {
         "hello": "Hello World"
+    },
+    "routes": {
+        "goToHome": "Go to home"
     }
 }

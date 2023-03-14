@@ -1,11 +1,20 @@
 <template>
   <header>
-      <HelloWorld />
+      <!-- <router-link to="/">Go to Home</router-link> -->
+      <!-- <div @click="designSystemRoute">design-system</div> -->
+      <img alt="Vue logo" src="./assets/images/m.png" @click="designSystemRoute" width="50" height="50" >
   </header>
+  <router-view />
 </template>
 
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import { useRouter } from 'vue-router'
+
+const currentRoute = useRouter()
+
+const designSystemRoute = () => {
+  currentRoute.push({ name: 'design-system' })
+}
 </script>
 
 <style scoped>
