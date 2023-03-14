@@ -2,9 +2,11 @@
   <div>
     {{ t('salutation.hello') }}
   </div>
-  <span @click="setLocale('pt')">PT</span>
-  <span> | </span>
   <span @click="setLocale('en')">EN</span>
+  <span> | </span>
+  <span @click="setLocale('pt')">PT</span>
+  <span> | </span>	
+  <span @click="setLocale('fr')">FR</span>
 
 </template>
 
