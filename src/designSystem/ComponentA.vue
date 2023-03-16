@@ -1,5 +1,5 @@
 <template>
-  <div class="teste">Component: A</div>
+  <div>Component: A</div>
 </template>
 
 <script setup>
@@ -18,7 +18,4 @@
 </script>
 
 <style lang="scss" scoped>
-.teste {
-  color: var(--main-white);
-}
 </style>
