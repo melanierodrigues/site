@@ -1,12 +1,41 @@
 <template>
-  <header>
-      <HelloWorld />
+  <header class="header">
+      <!-- <router-link to="/">Go to Home</router-link> -->
+      <!-- <div @click="designSystemRoute">design-system</div> -->
+      <!-- <img alt="Vue logo" src="./assets/images/m.png" @click="designSystemRoute" width="50" height="50" > -->
+      <h2 class="logo" @click="designSystemRoute">M</h2>
   </header>
+  <router-view />
 </template>
 
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+const designSystemRoute = () => {
+  router.push({ name: 'design-system' })
+}
 </script>
 
-<style scoped>
+<style lang="scss">
+@import 'src/style/main.scss';
+
+.header {
+  width: 100%;
+  height: 80px;
+  // background: var(--main-header-background-gradient); // trocar background depois por este
+  background-color: var(--main-background-color);
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px 80px;
+
+  .logo {
+    color: var(--main-orange);
+    font-size: 37px;
+    font-family: 'Climate Crisis';
+  }
+}
 </style>
