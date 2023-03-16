@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 /* Views */
 import DesignSystem from '../designSystem/DesignSystem.vue'
+// import DesignSystemDetail from '../designSystem/DesignSystemDetail.vue'
 import Home from '../views/HelloWorld.vue'
 
 const router = createRouter({
@@ -15,6 +16,11 @@ const router = createRouter({
     {
       path: '/design-system',
       name: 'design-system',
+      component: DesignSystem
+    },
+    {
+      path: '/design-system/:id',
+      name: 'design-system-id',
       component: DesignSystem
     }
     // {

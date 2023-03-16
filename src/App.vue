@@ -10,10 +10,10 @@
 <script setup>
 import { useRouter } from 'vue-router'
 
-const currentRoute = useRouter()
+const router = useRouter()
 
 const designSystemRoute = () => {
-  currentRoute.push({ name: 'design-system' })
+  router.push({ name: 'design-system' })
 }
 </script>
 
