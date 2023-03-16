@@ -7,12 +7,15 @@
     class="circle"
     :style="{'backgroundColor': `var(${color.backgroundGradient ? null : color.name})`,
     'background': `var(${color.backgroundGradient ? color.name : null})`,
-    'border': `${color.isBorderColor ? '1px solid var(--main-background-color)' : null}`}"
+    'border': `${color.isBorderColor ? '1px solid var(--vt-c-divider-dark-1)' : null}`}"
     ></div>
   </div>
+  <copy-import name="ButtonRaised" route="@/components/generic/buttons/Raised"/>
 </template>
 
 <script setup>
+import CopyImport from './components/CopyImport.vue'
+
 const colorPalette = [
 	{
 		id: '--main-white',
