@@ -13,18 +13,22 @@
       v-for="component in Components"
       class="component"
       :key="component.id"
-      :selected="currentEntryId === component.id"
+      :selected="componentStuff.id === component.id"
       @click="componentHandler(component)">{{ component.text }}</div>
     </div>
 
     <!-- Components View -->
     <div class="design-system-component">
+      <h1 class="title">{{ componentStuff.title }}</h1>
       <component :is="componentsWrapper()"/>
+      <copy-import v-if="componentStuff.haveCopyImport" :name="componentStuff.id" :route="componentStuff.route"/>
     </div>
   </div>
 </template>
 
 <script setup>
+import CopyImport from './components/CopyImport.vue'
+
 /* Vue */
 import { ref, defineAsyncComponent } from 'vue'
 
@@ -37,7 +41,13 @@ const { t } = useI18n()
 
 /* Data */
 const router = useRouter()
-const currentEntryId = ref('ColorsPalette')
+
+const componentStuff = ref({
+  id: 'ColorsPalette',
+  title: 'Colors',
+  route: '../designSystem/ColorsPalette',
+  haveCopyImport: false
+})
 
 /*************************************************
 *                                                *
@@ -52,37 +62,42 @@ const paramsRoute = (route) => {
   router.push({
     name: 'design-system-id',
     params: {
-      id: route,
-      component: () => import('./ComponentB.vue')
+      id: route
     }
   })
 }
 
 const componentsWrapper = () => {
-  paramsRoute(currentEntryId.value)
-  return defineAsyncComponent(() => import('./' + currentEntryId.value + '.vue'))
+  paramsRoute(componentStuff.value.id)
+  return defineAsyncComponent(() => import(componentStuff.value.route + '.vue'))
 }
 
 const componentHandler = ($event) => {
-  currentEntryId.value = $event.id
+  componentStuff.value = {
+    id: $event.id,
+    title: $event.text,
+    route: $event.link,
+    haveCopyImport: $event.haveCopyImport
+  }
 }
 
 const Components = [
 	{
 		id: 'ColorsPalette',
-		link: { path: '/designShowroom', hash: '#buttonsComponents' },
-		text: 'Colors'
+		link: '../designSystem/ColorsPalette',
+		text: 'Colors',
+    haveCopyImport: false
 	},
 	{
-		id: 'ComponentB',
-		link: { path: '/designShowroom', hash: '#cardsComponents' },
-		text: 'Cards',
-		children: []
+		id: 'SkillsColumn',
+		link: '../designSystem/SkillsColumnDS',
+		text: 'Skills Column',
+    haveCopyImport: false
 	},	{
 		id: 'ComponentA',
-		link: { path: '/designShowroom', hash: '#buttonsComponents' },
+		link: '../designSystem/ComponentA',
 		text: 'Buttons',
-		children: []
+    haveCopyImport: false
 	}
 ]
 </script>
@@ -141,6 +156,15 @@ const Components = [
     .design-system-component {
       width: 100%;
       padding: 24px;
+
+      .title {
+        font-size: 24px;
+        font-weight: 800;
+        text-transform: capitalize;
+        color: var(--secondary-orange);
+      
+        margin-bottom: 16px;
+      }
 
       // background-color: var(--main-orange);
     }

@@ -1,5 +1,4 @@
 <template>
-  <h1 class="title">Colors</h1>
   <div class="palette-colors-wrapper">
     <div
     v-for="color in colorPalette"
@@ -14,11 +13,11 @@
       <p class="tooltiptext">{{ tooltipText }}</p>
     </div>
   </div>
-  <copy-import name="ButtonRaised" route="@/components/generic/buttons/Raised"/>
+  <!-- <copy-import name="ButtonRaised" route="@/components/generic/buttons/Raised"/> -->
 </template>
 
 <script setup>
-import CopyImport from './components/CopyImport.vue'
+// import CopyImport from './components/CopyImport.vue'
 
 /* Vue */
 import { ref } from 'vue'
@@ -65,13 +64,6 @@ const colorPalette = [
 </script>
 
 <style lang="scss" scoped>
-.title {
-  font-size: 24px;
-  font-weight: 800;
-  color: var(--secondary-orange);
-
-  margin-bottom: 16px;
-}
 .palette-colors-wrapper {
   width: 100%;
 
