@@ -4,7 +4,7 @@
         <div class="icon-wrapper">
             <div class="icon">
                 <!-- <icon-copy :id="name" @click="copyText"/> -->
-                <img :id="name" class="icon" :src="iconCopy" @click="copyText"/>
+                <img :id="name" class="icon" :src="iconCopy" @click="copyText" @mouseleave="tooltipText = 'Copy code'"/>
                 <p class="tooltiptext">{{ tooltipText }}</p>
             </div>
         </div>
@@ -21,7 +21,7 @@
 import iconCopy from '../../assets/icons/copy-icon.svg?inline'
 
 /* Vue */
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 
 /** Props received:
 @name { String } - name import
@@ -52,13 +52,6 @@ const copyText = () => {
 
     tooltipText.value = 'Copied!'
 }
-
-/* When the icon is clicked after leave the icon the text tooltip change for 'Copy code' */
-watch(() => tooltipText.value === 'Copied!', () => {
-    document.getElementById(props.name).addEventListener('mouseover', function () {
-        setTimeout(() => { tooltipText.value = 'Copy code' }, 50)
-    }, false)
-})
 
 /* Show component if VUE_APP_SHOW_DESIGN_SHOWROOM_DEV_NOTES === 'true' */
 // const showComponent = computed(() => {
@@ -123,11 +116,15 @@ watch(() => tooltipText.value === 'Copied!', () => {
 
     @keyframes tooltip {
         0% {
+            transform-origin: right;
             transform: translateY(-20px);
+            scale: 0;
             opacity: 0;
         }
         100% {
+            transform-origin: right;
             transform: translateY(-42px);
+            scale: 1;
             opacity: 1;
         }
     }
