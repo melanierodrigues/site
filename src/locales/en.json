@@ -11,7 +11,12 @@
             "tools": "Tools",
             "design": "Design",
             "methodologies": "Methodologies",
-            "languages": "Languages"
+            "languages": "Languages",
+            "programmingTextRight": "HTML \n CSS3 \n JavaScript (ES6) \n C# \n TypeScript \n React.js \n Vue.js \n Unity",
+            "toolsTextRight": "VSC \n Redmine \n Git/GitHub \n Trello",
+            "designTextRight": "Figma \n Zeplin \n Adobe Photoshop \n Adobe Illustrator \n Adobe Indesign ",
+            "methodologiesTextRight": "Scrum \n Design Thinking",
+            "languagesTextRight": "Portuguese \n French \n English"
         }
     }
 }
