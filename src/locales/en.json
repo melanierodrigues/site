@@ -4,5 +4,14 @@
     },
     "routes": {
         "goToHome": "Go to home"
+    },
+    "aboutMe": {
+        "skills": {
+            "programming": "Programming",
+            "tools": "Tools",
+            "design": "Design",
+            "methodologies": "Methodologies",
+            "languages": "Languages"
+        }
     }
 }

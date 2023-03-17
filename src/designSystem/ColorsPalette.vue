@@ -7,7 +7,7 @@
     class="circle"
     :style="{'backgroundColor': `var(${color.backgroundGradient ? null : color.name})`,
     'background': `var(${color.backgroundGradient ? color.name : null})`,
-    'border': `${color.isBorderColor ? '1px solid var(--vt-c-divider-dark-1)' : null}`}"
+    'border': `${color.isBorderColor ? '2px solid var(--main-white)' : null}`}"
     @click="copyHandler(color.id)"
     @mouseleave="tooltipText = 'Copy color'">
       <p class="tooltiptext">{{ tooltipText }}</p>
@@ -34,7 +34,6 @@ const colorPalette = [
 	{
 		id: '--main-white',
 		name: '--main-white',
-    isBorderColor: true,
     borderColor: '--main-background-color'
 	},
 	{
@@ -45,14 +44,16 @@ const colorPalette = [
 		id: '--secondary-orange',
 		name: '--secondary-orange'
 	},
-	{
-		id: '--main-header-background-gradient',
-		name: '--main-header-background-gradient',
-    backgroundGradient: true
-	},
+	// {
+	// 	id: '--main-header-background-gradient',
+	// 	name: '--main-header-background-gradient',
+  //   backgroundGradient: true,
+  //   isBorderColor: true
+	// },
 	{
 		id: '--main-background-color',
-		name: '--main-background-color'
+		name: '--main-background-color',
+    isBorderColor: true
 	}
 ]
 

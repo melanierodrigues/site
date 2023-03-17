@@ -45,7 +45,7 @@ const router = useRouter()
 const componentStuff = ref({
   id: 'ColorsPalette',
   title: 'Colors',
-  route: '../designSystem/ColorsPalette',
+  route: '../designSystem/ColorsPalette.vue',
   haveCopyImport: false
 })
 
@@ -69,14 +69,14 @@ const paramsRoute = (route) => {
 
 const componentsWrapper = () => {
   paramsRoute(componentStuff.value.id)
-  return defineAsyncComponent(() => import(componentStuff.value.route + '.vue'))
+  return defineAsyncComponent(() => import(componentStuff.value.route))
 }
 
 const componentHandler = ($event) => {
   componentStuff.value = {
     id: $event.id,
     title: $event.text,
-    route: $event.link,
+    route: $event.route,
     haveCopyImport: $event.haveCopyImport
   }
 }
@@ -84,18 +84,18 @@ const componentHandler = ($event) => {
 const Components = [
 	{
 		id: 'ColorsPalette',
-		link: '../designSystem/ColorsPalette',
+		route: '../designSystem/ColorsPalette.vue',
 		text: 'Colors',
     haveCopyImport: false
 	},
 	{
 		id: 'SkillsColumn',
-		link: '../designSystem/SkillsColumnDS',
+		route: '../designSystem/SkillsColumnDS.vue',
 		text: 'Skills Column',
     haveCopyImport: false
 	},	{
 		id: 'ComponentA',
-		link: '../designSystem/ComponentA',
+		route: '../designSystem/ComponentA.vue',
 		text: 'Buttons',
     haveCopyImport: false
 	}
@@ -129,6 +129,7 @@ const Components = [
   height: 90vh;
 
   display: flex;
+  background-color: var(--design-system-background-dark);
 
     .design-system-components {
       min-width: 150px;
