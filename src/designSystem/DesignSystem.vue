@@ -95,7 +95,7 @@ const Components = [
     haveCopyImport: false
 	},	{
 		id: 'ComponentA',
-		route: '../designSystem/ComponentA.vue',
+		route: '../designSystem/ButtonsDS.vue',
 		text: 'Buttons',
     haveCopyImport: false
 	}
@@ -139,8 +139,9 @@ const Components = [
       flex-direction: column;
       gap: 16px;
 
-      font-family: 'Climate Crisis';
+      // font-family: 'Climate Crisis';
       font-size: 18px;
+      font-weight: 800;
       color: var(--main-white);
       background-color: var(--main-orange);
 

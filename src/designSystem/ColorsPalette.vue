@@ -7,7 +7,7 @@
     class="circle"
     :style="{'backgroundColor': `var(${color.backgroundGradient ? null : color.name})`,
     'background': `var(${color.backgroundGradient ? color.name : null})`,
-    'border': `${color.isBorderColor ? '2px solid var(--main-white)' : null}`}"
+    'border': `${color.isBorderColor ? 'px solid var(--main-white)' : null}`}"
     @click="copyHandler(color.id)"
     @mouseleave="tooltipText = 'Copy color'">
       <p class="tooltiptext">{{ tooltipText }}</p>
@@ -50,6 +50,11 @@ const colorPalette = [
   //   backgroundGradient: true,
   //   isBorderColor: true
 	// },
+  {
+		id: '--text-color-black',
+		name: '--text-color-black',
+    isBorderColor: true
+	},
 	{
 		id: '--main-background-color',
 		name: '--main-background-color',
