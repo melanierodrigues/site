@@ -6,6 +6,8 @@
         "goToHome": "Go to home"
     },
     "aboutMe": {
+        "title": "About Me",
+        "text": "My name is Mélanie Rodrigues, and I'm a creative developer based in Lisbon, Portugal. With my 3 years of experience as a product designer and project manager, I bring a unique perspective to my current work as a developer. I'm passionate about all things tech and design, and I love nothing more than creating beautiful and functional websites and applications. In my free time, I enjoy exploring the world of game development, riding my motorcycle, camping, and indulging in my love of illustration. My approach to work is all about collaboration, creativity, and clean code! I believe that a positive and solution-driven attitude is essential to success. If you're interested in working together on a project, please don't hesitate to get in touch. I'm always up for a new challenge and would love to hear about your ideas.",
         "skills": {
             "programming": "Programming",
             "tools": "Tools",

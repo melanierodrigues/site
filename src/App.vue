@@ -5,7 +5,9 @@
       <!-- <img alt="Vue logo" src="./assets/images/m.png" @click="designSystemRoute" width="50" height="50" > -->
       <h2 class="logo" @click="designSystemRoute">M</h2>
   </header>
-  <router-view />
+  <div class="main">
+    <router-view />
+  </div>
 </template>
 
 <script setup>
@@ -37,5 +39,11 @@ const designSystemRoute = () => {
     font-size: 37px;
     font-family: 'Climate Crisis';
   }
+}
+
+.main {
+  width: 100%;
+  height: 90vh;
+  background-color: var(--main-background-color);
 }
 </style>
