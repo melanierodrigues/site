@@ -5,7 +5,10 @@
         </div>
         <p class="text">{{ t('aboutMe.text') }}</p>
         <div class="content">
-            
+            <div class="photo-container">
+                <div class="mask"></div>
+                <img class="photo" :src="Photo" />
+            </div>
             <div>
                 <skills-column style="width: 100%;" :columnData="columnData"/>
             </div>
@@ -15,6 +18,7 @@
 
 <script setup>
 import SkillsColumn from '../../components/SkillsColumn.vue'
+import Photo from '../../assets/images/photo.jpg'
 
 /* i18n */
 import { useI18n } from 'vue-i18n'
@@ -84,6 +88,27 @@ const { t } = useI18n()
 
     .content {
         display: flex;
+        flex-direction: column;
+        gap: 24px;
+
+        margin-left: 80px;
+        .photo-container {
+            .mask {
+                width: 310px;
+                height: 239.58px;
+
+                position: absolute;
+                background: var(--main-orange);
+                // mix-blend-mode: multiply;
+            }
+            .photo {
+                width: 310px;
+                height: 239.58px;
+
+                opacity: 0.8;
+                mix-blend-mode: multiply;
+            }
+        }
     }
 }
 </style>
