@@ -93,10 +93,15 @@ const Components = [
 		route: '../designSystem/SkillsColumnDS.vue',
 		text: 'Skills Column',
     haveCopyImport: false
-	},	{
-		id: 'ComponentA',
+	}, {
+		id: 'Buttons',
 		route: '../designSystem/ButtonsDS.vue',
 		text: 'Buttons',
+    haveCopyImport: false
+	}, {
+		id: 'Pills',
+		route: '../designSystem/PillsDS.vue',
+		text: 'Pills',
     haveCopyImport: false
 	}
 ]

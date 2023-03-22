@@ -25,11 +25,13 @@
       <div class="title">disabled</div>
       <button-base text="This is a button" @clicked="clickedButton" disabled/>
     </div>
+    <copy-import name="ButtonBase" route="../components/ButtonBase.vue"/>
   </div>
 </template>
 
 <script setup>
 import ButtonBase from '../components/ButtonBase.vue'
+import CopyImport from './components/CopyImport.vue'
 /* Router */
 // import { useRouter } from 'vue-router'
 
