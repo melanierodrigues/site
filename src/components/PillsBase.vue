@@ -4,16 +4,16 @@
         <div id="teste" class="first-pills">{{ props.firstText }}</div>
         <div v-if="secondText" class="second-pills">{{ props.secondText }}</div>
     </div>
-    <div style="color: var(--main-orange); margin: 50px 0;">Ver: {{ ver }}</div>
+    <!-- <div style="color: var(--main-orange); margin: 50px 0;">Ver: {{ ver }}</div> -->
     <!-- <p id="result" style="color: var(--main-orange); margin: 50px;">{{ result }}</p> -->
-    <button @touchend="requestDeviceOrientation">Request Orientation</button>
+    <!-- <button @touchend="requestDeviceOrientation">Request Orientation</button> -->
 </template>
   
 <script setup>  
 /* Vue */
 // import { computed } from 'vue'
 
-import { ref } from 'vue';
+// import { ref } from 'vue';
 
 /* Emmitters */
 // const emit = defineEmits(['clicked'])  
@@ -27,7 +27,7 @@ const props = defineProps({
     secondText: String
 })
 
-const ver = ref()
+// const ver = ref()
 
 // onMounted(() => {
 //     if (window.DeviceOrientationEvent) {
@@ -65,31 +65,31 @@ const ver = ref()
 //   ver.value = result
 // }
 
-function requestDeviceOrientation () {
-  if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
-  DeviceOrientationEvent.requestPermission()
-  .then(permissionState => {
-    if (permissionState === 'granted') {
-        window.addEventListener('deviceorientation', (e) => {
-            const x = e.beta
-                ver.value = x
-        });
-    } else {
-        alert('Nooooo')
-        ver.value = '=S'
-    }
-  })
-  .catch(console.error)
-  } else {
-    window.addEventListener('deviceorientation', (e) => {
-            const x = e.beta
-                ver.value = x
-        });
-  // handle regular non iOS 13+ devices
-  console.log ('not iOS')
-  ver.value = 'not iOS'
-  }
-}
+// function requestDeviceOrientation () {
+//   if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
+//   DeviceOrientationEvent.requestPermission()
+//   .then(permissionState => {
+//     if (permissionState === 'granted') {
+//         window.addEventListener('deviceorientation', (e) => {
+//             const x = e.beta
+//                 ver.value = x
+//         });
+//     } else {
+//         alert('Nooooo')
+//         ver.value = '=S'
+//     }
+//   })
+//   .catch(console.error)
+//   } else {
+//     window.addEventListener('deviceorientation', (e) => {
+//             const x = e.beta
+//                 ver.value = x
+//         });
+//   // handle regular non iOS 13+ devices
+//   console.log ('not iOS')
+//   ver.value = 'not iOS'
+//   }
+// }
 </script>
 
 <style lang="scss" scoped>
