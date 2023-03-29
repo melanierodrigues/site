@@ -58,15 +58,16 @@ const { t } = useI18n()
     display: flex;
     flex-direction: row;
     .title {
-        // width: 489px;
-         // height: 90px;
+        width: 90px;
+        height: 498px;
         color: var(--main-white);
         font-family: 'Climate Crisis';
         writing-mode: vertical-lr;
-        font-style: normal;
+        transform: rotate(180deg);
         font-weight: 400;
         font-size: 68px;
         line-height: 90px;
+        text-align: right;
     }
 
     .text {
@@ -75,7 +76,6 @@ const { t } = useI18n()
         margin-left: 56px;
 
         font-family: 'Jost';
-        font-style: normal;
         font-weight: 400;
         font-size: 18px;
         line-height: 26px;
@@ -99,13 +99,12 @@ const { t } = useI18n()
 
                 position: absolute;
                 background: var(--main-orange);
-                // mix-blend-mode: multiply;
             }
             .photo {
                 width: 310px;
                 height: 239.58px;
 
-                opacity: 0.8;
+                filter: grayscale(100%) brightness(200%) contrast(70%);
                 mix-blend-mode: multiply;
             }
         }
