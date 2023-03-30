@@ -57,6 +57,8 @@ const { t } = useI18n()
 .about-me {
     display: flex;
     flex-direction: row;
+
+    height: fit-content;
     .title {
         width: 90px;
         height: 498px;
@@ -93,6 +95,7 @@ const { t } = useI18n()
 
         margin-left: 80px;
         .photo-container {
+            position: relative;
             .mask {
                 width: 310px;
                 height: 239.58px;
