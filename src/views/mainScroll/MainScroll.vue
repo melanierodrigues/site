@@ -1,5 +1,7 @@
 <template>
-  <div id="teste" class="main" v-dragscroll v-on:dragscrollstart="true" v-on:dragscrollmove="doSomething($event)">
+  <div id="teste" class="main" v-dragscroll v-on:dragscrollstart="true" v-on:dragscrollmove="doSomething($event)" v-on:click="teste()">
+    <about-me />
+    <about-me />
     <about-me />
     <about-me />
   </div>
@@ -20,20 +22,33 @@ import { ref } from 'vue'
 // v-on:dragscrollmove="doSomething($event)"
 
 const translate = ref(0)
+
+const teste = () => {
+  if (translate.value === 0 || translate.value < 1500) translate.value += 200
+  if (translate.value > 1000) translate.value = 0
+  // console.log('translate.value', translate.value)
+  // document.getElementById('teste').style.transform = `translateX(-${translate.value}px)`
+}
+
 const doSomething = ($event) => {
-  console.log('$event', $event)
+  // console.log('$event', $event)
     // $event.detail.deltaX = 0
     // $event.detail.bubbles = true
     // $event.detail.cancelBubble = true
     // $event.detail.timeStamp
-    if ($event.detail.deltaX > 0) {
-      translate.value += 50
+    const teste = document.getElementById('teste').getBoundingClientRect()
+    if (($event.detail.deltaX > 0)) {
+      console.log('direita')
+      console.log('translate.value', translate.value)
+      console.log('document.getElementById', document.getElementById('teste').style.transform)
       // document.getElementById('teste').style.transform = "translate(" + 150 + "px, " + 0 + "px)"
       document.getElementById('teste').style.transform = `translateX(-${translate.value}px)`
     }
 
-    if ($event.detail.deltaX < 0) {
-      translate.value -= 50
+    if (($event.detail.deltaX < 0)) {
+      // if (($event.detail.deltaX < 0)) {
+      console.log('esquerda')
+      console.log('document.getElementById', document.getElementById('teste').style.transform)
       document.getElementById('teste').style.transform = `translateX(${translate.value}px)`
     }
 
@@ -59,16 +74,20 @@ const doSomething = ($event) => {
 
 <style lang="scss" scoped>
 .main {
-  width: 100vw;
+  min-width: min-content;
   height: calc(100vh - 110px);
 
   display: flex;
   flex-direction: row;
   align-items: flex-end;
   gap: 42px;
-  overflow-x: scroll;
+  // overflow-x: scroll;
+
+  padding-right: 500px;
 
   transition: all 0.8s ease-in-out;
+
+  background-color: red;
 
   // scroll-behavior: smooth;
 
