@@ -1,14 +1,15 @@
 <template>
-  <div id="teste" class="main" v-dragscroll v-on:dragscrollstart="true" v-on:dragscrollmove="doSomething($event)" v-on:click="teste()">
+  <!-- <div id="teste" class="main" v-dragscroll v-on:dragscrollstart="true" v-on:dragscrollmove="doSomething($event)" v-on:click="teste()">
     <about-me />
     <about-me />
     <about-me />
     <about-me />
-  </div>
+  </div> -->
+  <about-me />
 </template>
   
 <script setup>
-import AboutMe from '../../components/mainScroll/AboutMe.vue';
+import AboutMe from '../../components/mainScroll/AboutMe.vue'
 
 /* Vue */
 import { ref } from 'vue'
@@ -24,10 +25,8 @@ import { ref } from 'vue'
 const translate = ref(0)
 
 const teste = () => {
-  if (translate.value === 0 || translate.value < 1500) translate.value += 200
-  if (translate.value > 1000) translate.value = 0
-  // console.log('translate.value', translate.value)
-  // document.getElementById('teste').style.transform = `translateX(-${translate.value}px)`
+  if (translate.value === 0 || translate.value < document.getElementById('teste').getBoundingClientRect().width) translate.value += 300
+  if (translate.value > document.getElementById('teste').getBoundingClientRect().width) translate.value = 0
 }
 
 const doSomething = ($event) => {
@@ -36,11 +35,9 @@ const doSomething = ($event) => {
     // $event.detail.bubbles = true
     // $event.detail.cancelBubble = true
     // $event.detail.timeStamp
-    const teste = document.getElementById('teste').getBoundingClientRect()
+    console.log('$event.detail.deltaX', $event)
     if (($event.detail.deltaX > 0)) {
       console.log('direita')
-      console.log('translate.value', translate.value)
-      console.log('document.getElementById', document.getElementById('teste').style.transform)
       // document.getElementById('teste').style.transform = "translate(" + 150 + "px, " + 0 + "px)"
       document.getElementById('teste').style.transform = `translateX(-${translate.value}px)`
     }
@@ -48,22 +45,8 @@ const doSomething = ($event) => {
     if (($event.detail.deltaX < 0)) {
       // if (($event.detail.deltaX < 0)) {
       console.log('esquerda')
-      console.log('document.getElementById', document.getElementById('teste').style.transform)
       document.getElementById('teste').style.transform = `translateX(${translate.value}px)`
     }
-
-    // document.getElementById('teste').addEventListener('dragover', () => {
-
-    // if ($event.detail.deltaX > 1) {
-    //   // document.getElementById('teste').style.transform = "translate(" + 150 + "px, " + 0 + "px)"
-    //   document.getElementById('teste').style.transform = "translateX(150px)"
-    // }
-
-    // if ($event.detail.deltaX > 1) {
-    //   document.getElementById('teste').style.transform = "translateX(-150px)"
-    // }
-
-    // })
 }
 /*************************************************
 *                                                *
