@@ -5,11 +5,13 @@
     <about-me />
     <about-me />
   </div> -->
-  <about-me />
+  <!-- <about-me /> -->
+  <LittleApresentation />
 </template>
   
 <script setup>
 import AboutMe from '../../components/mainScroll/AboutMe.vue'
+import LittleApresentation from '../../components/mainScroll/LittleApresentation.vue'
 
 /* Vue */
 import { ref } from 'vue'

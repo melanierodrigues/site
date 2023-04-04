@@ -20,5 +20,12 @@
             "methodologiesTextRight": "Scrum \n Design Thinking",
             "languagesTextRight": "Portuguese \n French \n English"
         }
+    },
+    "littleApresentation": {
+        "title": "Mélanie",
+        "subtitle": "creative developer",
+        "paragraph": "I’m a software engineer specializing in building exceptional digital experiences. \n Currently, I’m focused on building accessible, human-centered products at <a href={ link } target={ target } >Innovation Makers</a>",
+        "resumeButton": "Resume",
+        "contactMeButton": "Contact Me"
     }
 }

@@ -8,7 +8,7 @@
     <!-- Button Base -->
     <div class="button-container">
       <div class="title">Base</div>
-      <button-base text="This is a button" @clicked="clickedButton" />
+      <button-base text="This is a button" @clicked="clickedButton"/>
     </div>
     <!-- fullColor -->
     <div class="button-container">
