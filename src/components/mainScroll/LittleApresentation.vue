@@ -7,7 +7,7 @@
         <div class="divider" />
         <p class="paragraph" v-html="t('littleApresentation.paragraph', { link: 'https://www.inm.pt/', target: '_blank' })" />
         <div class="buttons-wrapper">
-            <button-base :text="t('littleApresentation.resumeButton')" @clicked="download()"/>
+            <a class="resume" href="https://www.melanierodrigues.com/assets/M%C3%A9lanie%20Rodrigues_CV%20_2021.pdf">{{ t('littleApresentation.resumeButton') }}</a>
             <button-base :text="t('littleApresentation.contactMeButton')" @clicked="clickedButton"/>
         </div>
     </div>
@@ -20,57 +20,11 @@ import ButtonBase from '../../components/ButtonBase.vue'
 import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 
+
+// TO DO
 const clickedButton = () => {
   alert('This is a Button')
 }
-
-const download = async () => {
-    await fetch("https://www.africau.edu/images/default/sample.pdf", {
-    method: 'GET'
-}).then(resp => resp.blob())
-    .then(blob => {
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.style.display = 'none';
-        a.href = url;
-        a.download = "name"; // the filename you want
-        document.body.appendChild(a);
-        a.click();
-        window.URL.revokeObjectURL(url);
-    })
-}
-
-// function download(url, filename) {
-// fetch(url).then(function(t) {
-//     return t.blob().then((b)=>{
-//         var a = document.createElement("a");
-//         a.href = URL.createObjectURL(b);
-//         a.setAttribute("download", filename);
-//         a.click();
-//     }
-//     );
-// });
-// }
-
-// function download() {
-//     var a = document.createElement("a")
-//     a.style = "display: none"
-//     a.href = "data:application/pdf;base64,<?= $file_content ?>"
-//     a.download = "https://www.melanierodrigues.com/assets/M%C3%A9lanie%20Rodrigues_CV%20_2021.pdf"
-//     document.body.appendChild(a)
-//     a.click()
-//     document.body.removeChild(a)
-// }
-
-// function download() {
-//     const linkSource = `data:application/pdf;base64,${'https://www.melanierodrigues.com/assets/M%C3%A9lanie%20Rodrigues_CV%20_2021.pdf'}`;
-//     const downloadLink = document.createElement("a");
-//     const fileName = "vct_illustration.pdf";
-
-//     downloadLink.href = linkSource;
-//     downloadLink.download = fileName;
-//     downloadLink.click();
-// }
 </script>
 
 <style lang="scss" scoped>
@@ -118,6 +72,10 @@ const download = async () => {
             }
 
             &:visited {
+                font-family: 'Jost';
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 26px;
                 color: var(--main-white);
             }
         }
@@ -136,6 +94,27 @@ const download = async () => {
 
             font-weight: 400;
             font-size: 16px;
+        }
+
+        .resume {
+            font-family: 'Jost';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 23px;
+            text-transform: uppercase;
+            color: var(--main-orange);
+
+            text-decoration-line: none;
+
+            &:hover {
+                text-decoration-line: underline;
+            }
+
+            &:visited {
+                font-size: 16px;
+                color: var(--main-orange);
+            }
         }
     }
 }

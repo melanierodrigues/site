@@ -47,6 +47,7 @@ const buttonClass = computed(() => {
     padding: 16px 40px;
     gap: 8px;
 
+    font-family: 'Jost';
     color: var(--main-orange);
     background-color: transparent;
     border: none;
