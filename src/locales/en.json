@@ -27,5 +27,20 @@
         "paragraph": "I’m a software engineer specializing in building exceptional digital experiences. \n Currently, I’m focused on building accessible, human-centered products at <a href={ link } target={ target } >Innovation Makers</a>",
         "resumeButton": "Resume",
         "contactMeButton": "Contact Me"
+    },
+    "projectBase": {
+        "title": "Projects"
+    },
+    "project1": {
+        "name": "BAIDirecto - Internet Banking:",
+        "description": "I was tasked with optimizing the existing app for improved scalability and performance. My contributions included utilizing my expertise in front-end development, including Vue.js, to improve the platform's responsiveness, speed, and overall user experience. Through careful analysis and optimization of the codebase, I was able to enhance the platform's functionality, such as account balances, transactions, and payment services, while ensuring the platform was accessible to all users.",
+        "pills": {
+            "roleLabel": "Role",
+            "roleDescription": "Frontend developer",
+            "companyLabel": "Company",
+            "companyDescription": "Innovation Makers",
+            "technologiesLabel": "Technologies",
+            "technologiesDescription": "HTML \n CSS3 \n JavaScript (ES6) \n Vue.js"
+        }
     }
 }

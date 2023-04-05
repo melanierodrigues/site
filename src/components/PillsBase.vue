@@ -1,8 +1,9 @@
 <template>
     <!--| | PILLS BASE | |-->
-    <div class="pills-container">
+    <div class="pills-container" :class="{'pills-container-description': description}">
         <div id="teste" class="first-pills">{{ props.firstText }}</div>
         <div v-if="secondText" class="second-pills">{{ props.secondText }}</div>
+        <div v-if="description" class="description">{{ props.description }}</div>
     </div>
     <!-- <div style="color: var(--main-orange); margin: 50px 0;">Ver: {{ ver }}</div> -->
     <!-- <p id="result" style="color: var(--main-orange); margin: 50px;">{{ result }}</p> -->
@@ -21,10 +22,12 @@
 /** Props received:
 @firstText { String }
 @secondText { String }
+@description { String }
 */
 const props = defineProps({
     firstText: String,
-    secondText: String
+    secondText: String,
+    description: String
 })
 
 // const ver = ref()
@@ -98,8 +101,15 @@ const props = defineProps({
     flex-direction: row;
     align-items: flex-start;
     gap: 8px;
+
+    &.pills-container-description {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
     .first-pills {
-        width: fit-content;
+        // width: fit-content;
         padding: 4px 10px;
 
         background: var(--main-orange);
@@ -110,10 +120,11 @@ const props = defineProps({
         font-size: 18px;
         font-style: normal;
         line-height: 26px;
+        text-transform: capitalize;
     }
 
     .second-pills {
-        width: fit-content;
+        // width: fit-content;
         padding: 4px 10px;
 
         background: var(--main-orange);
@@ -124,6 +135,17 @@ const props = defineProps({
         font-size: 18px;
         font-style: normal;
         line-height: 26px;
+        text-transform: capitalize;
+    }
+
+    .description {
+        font-family: 'Jost';
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 23px;
+
+        color: var(--main-white);
+        text-transform: capitalize;
     }
 }
 </style>

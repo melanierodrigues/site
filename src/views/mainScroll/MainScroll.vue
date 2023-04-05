@@ -1,17 +1,17 @@
 <template>
   <!-- <div id="teste" class="main" v-dragscroll v-on:dragscrollstart="true" v-on:dragscrollmove="doSomething($event)" v-on:click="teste()">
-    <about-me />
-    <about-me />
-    <about-me />
+    <little-apresentation />
     <about-me />
   </div> -->
   <!-- <about-me /> -->
-  <LittleApresentation />
+  <!-- <little-apresentation /> -->
+  <project-base />
 </template>
   
 <script setup>
-import AboutMe from '../../components/mainScroll/AboutMe.vue'
-import LittleApresentation from '../../components/mainScroll/LittleApresentation.vue'
+import AboutMe from './AboutMe.vue'
+import LittleApresentation from './LittleApresentation.vue'
+import ProjectBase from './ProjectBase.vue'
 
 /* Vue */
 import { ref } from 'vue'
