@@ -2,7 +2,11 @@
     <div class="project-container">
         <!-- Main Content -->
         <div class="content">
-            <div class="images-projects"></div>
+            <div class="images-projects" ref="testeM" @mousedown="mouseDownHandler">
+                <div class="image"></div>
+                <div class="image"></div>
+                <div class="image"></div>
+            </div>
             <div class="project-name">{{ props.project.name }}</div>
             <p class="paragraph">{{ props.project.description }}</p>
         </div>
@@ -21,6 +25,8 @@
 import Pills from '@/components/PillsBase.vue'
 // import ButtonBase from '../ButtonBase.vue'
 
+import { ref, onMounted } from 'vue'
+
 /** Props received:
 @project { Object }
     - name { String }
@@ -31,6 +37,53 @@ const props = defineProps({
     project: Object,
     pills: Array
 })
+
+const testeM = ref(null)
+
+let pos = { top: 0, left: 0, x: 0, y: 0 }
+
+const mouseDownHandler = function(e) {
+    testeM.value.scrollTop = 100
+    testeM.value.scrollLeft = 150
+
+    pos = {
+        // The current scroll
+        left: testeM.value.scrollLeft,
+        top: testeM.value.scrollTop,
+        // Get the current mouse position
+        x: e.clientX,
+        y: e.clientY,
+    }
+
+    // document.addEventListener('mousemove', mouseMoveHandler)
+    // document.addEventListener('mouseup', mouseUpHandler)
+
+    console.log('ver', testeM.value)
+
+    // Change the cursor and prevent user from selecting the text
+    testeM.value.addEventListener('mousemove', mouseMoveHandler)
+    testeM.value.addEventListener('mouseup', mouseUpHandler)
+    // ele.style.cursor = 'grabbing'
+    // ele.style.userSelect = 'none'
+}
+
+const mouseMoveHandler = function (e) {
+    // How far the mouse has been moved
+    const dx = e.clientX - pos.x
+    const dy = e.clientY - pos.y
+
+    // Scroll the element
+    testeM.value.scrollTop = pos.top - dy
+    testeM.value.scrollLeft = pos.left - dx
+}
+
+const mouseUpHandler = function () {
+    document.removeEventListener('mousemove', mouseMoveHandler)
+    document.removeEventListener('mouseup', mouseUpHandler)
+
+    testeM.value.style.cursor = 'grab'
+    testeM.value.style.removeProperty('user-select')
+}
 </script>
 
 <style lang="scss" scoped>
@@ -45,11 +98,26 @@ const props = defineProps({
     .content {
         max-width: 610px;
         .images-projects {
-            width: 100%;
+            max-width: 610px;
             height: 264px;
 
-            background-color: red;
+            background-color: rgb(83, 83, 83);
             margin-bottom: 47px;
+
+            display: flex;
+            flex-direction: row;
+            gap: 24px;
+
+            // overflow-x: auto;
+            // cursor: grab;
+            overflow: auto;
+            user-select: none;
+
+            .image {
+                min-width: 300px;
+                height: 100%;
+                background-color: red;
+            }
         }
 
         .project-name {
