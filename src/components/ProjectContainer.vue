@@ -2,8 +2,8 @@
     <div class="project-container">
         <!-- Main Content -->
         <div class="content">
-            <div v-if="props.images" class="images-projects" ref="containerScroll" @mouseover="mouseDownHandler" @mousemove="mouseMoveHandler" @mouseup="mouseUpHandler">
-                <div v-for="(image, index) in props.images" :key="`image-${index}`" class="photo-container">
+            <div v-if="props.images" class="images-projects" ref="testeM" @mouseover="mouseDownHandler">
+                <div v-for="(image, index) in props.images" key="index" class="photo-container">
                     <div class="mask"></div>
                     <img class="photo" :src="image.photo" />
                 </div>
@@ -24,6 +24,8 @@
 
 <script setup>
 import Pills from '@/components/PillsBase.vue'
+// import Photo from '@/assets/images/photo.jpg'
+// import ButtonBase from '../ButtonBase.vue'
 
 import { ref } from 'vue'
 
@@ -40,26 +42,28 @@ const props = defineProps({
     images: Array
 })
 
-const containerScroll = ref(null)
+const testeM = ref(null)
 
 let pos = { top: 0, left: 0, x: 0, y: 0 }
 
 const mouseDownHandler = function(e) {
-    containerScroll.value.scrollTop = 100
-    containerScroll.value.scrollLeft = 150
+    testeM.value.scrollTop = 100
+    testeM.value.scrollLeft = 150
 
     pos = {
         // The current scroll
-        left: containerScroll.value.scrollLeft,
-        top: containerScroll.value.scrollTop,
+        left: testeM.value.scrollLeft,
+        top: testeM.value.scrollTop,
         // Get the current mouse position
         x: e.clientX,
         y: e.clientY,
     }
 
     // Change the cursor and prevent user from selecting the text
-    containerScroll.value.style.cursor = 'grabbing'
-    containerScroll.value.style.userSelect = 'none'
+    testeM.value.addEventListener('mousemove', mouseMoveHandler)
+    testeM.value.addEventListener('mouseup', mouseUpHandler)
+    testeM.value.style.cursor = 'grabbing'
+    testeM.value.style.userSelect = 'none'
 }
 
 const mouseMoveHandler = function (e) {
@@ -68,16 +72,16 @@ const mouseMoveHandler = function (e) {
     const dy = e.clientY - pos.y
 
     // Scroll the element
-    containerScroll.value.scrollTop = pos.top - dy
-    containerScroll.value.scrollLeft = pos.left - dx
+    testeM.value.scrollTop = pos.top - dy
+    testeM.value.scrollLeft = pos.left - dx
 }
 
 const mouseUpHandler = function () {
     document.removeEventListener('mousemove', mouseMoveHandler)
     document.removeEventListener('mouseup', mouseUpHandler)
 
-    containerScroll.value.style.cursor = 'grab'
-    containerScroll.value.style.removeProperty('user-select')
+    testeM.value.style.cursor = 'grab'
+    testeM.value.style.removeProperty('user-select')
 }
 </script>
 
@@ -101,6 +105,8 @@ const mouseUpHandler = function () {
             flex-direction: row;
             gap: 24px;
 
+            // overflow-x: auto;
+            // cursor: grab;
             overflow: hidden;
             user-select: none;
 
@@ -112,22 +118,22 @@ const mouseUpHandler = function () {
             }
 
             .photo-container {
-                position: relative;
-                .mask {
-                    width: 310px;
-                    height: 239.58px;
+            position: relative;
+            .mask {
+                width: 310px;
+                height: 239.58px;
 
-                    position: absolute;
-                    background: var(--main-orange);
-                }
-                .photo {
-                    width: 310px;
-                    height: 239.58px;
-
-                    filter: grayscale(100%) brightness(200%) contrast(70%);
-                    mix-blend-mode: multiply;
-                }
+                position: absolute;
+                background: var(--main-orange);
             }
+            .photo {
+                width: 310px;
+                height: 239.58px;
+
+                filter: grayscale(100%) brightness(200%) contrast(70%);
+                mix-blend-mode: multiply;
+            }
+        }
         }
 
         .project-name {
