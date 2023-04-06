@@ -2,11 +2,10 @@
     <div class="project-container">
         <!-- Main Content -->
         <div class="content">
-            <div v-if="props.images" class="images-projects" ref="testeM" @mouseover="mouseDownHandler">
-                <div v-for="(image, index) in props.images" key="index" class="photo-container">
-                    <div class="mask"></div>
-                    <img class="photo" :src="image.photo" />
-                </div>
+            <div class="images-projects" ref="testeM" @mousedown="mouseDownHandler">
+                <div class="image"></div>
+                <div class="image"></div>
+                <div class="image"></div>
             </div>
             <div class="project-name">{{ props.project.name }}</div>
             <p class="paragraph">{{ props.project.description }}</p>
@@ -24,22 +23,19 @@
 
 <script setup>
 import Pills from '@/components/PillsBase.vue'
-// import Photo from '@/assets/images/photo.jpg'
 // import ButtonBase from '../ButtonBase.vue'
 
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
 /** Props received:
 @project { Object }
     - name { String }
     - description { String }
 @pills { Array }
-@images { Array }
 */
 const props = defineProps({
     project: Object,
-    pills: Array,
-    images: Array
+    pills: Array
 })
 
 const testeM = ref(null)
@@ -59,11 +55,16 @@ const mouseDownHandler = function(e) {
         y: e.clientY,
     }
 
+    // document.addEventListener('mousemove', mouseMoveHandler)
+    // document.addEventListener('mouseup', mouseUpHandler)
+
+    console.log('ver', testeM.value)
+
     // Change the cursor and prevent user from selecting the text
     testeM.value.addEventListener('mousemove', mouseMoveHandler)
     testeM.value.addEventListener('mouseup', mouseUpHandler)
-    testeM.value.style.cursor = 'grabbing'
-    testeM.value.style.userSelect = 'none'
+    // ele.style.cursor = 'grabbing'
+    // ele.style.userSelect = 'none'
 }
 
 const mouseMoveHandler = function (e) {
@@ -99,6 +100,8 @@ const mouseUpHandler = function () {
         .images-projects {
             max-width: 610px;
             height: 264px;
+
+            background-color: rgb(83, 83, 83);
             margin-bottom: 47px;
 
             display: flex;
@@ -107,33 +110,14 @@ const mouseUpHandler = function () {
 
             // overflow-x: auto;
             // cursor: grab;
-            overflow: hidden;
+            overflow: auto;
             user-select: none;
 
             .image {
-                min-width: 353px;
+                min-width: 300px;
                 height: 100%;
-                background-color: var(--main-orange);
-                mix-blend-mode: multiply;
+                background-color: red;
             }
-
-            .photo-container {
-            position: relative;
-            .mask {
-                width: 310px;
-                height: 239.58px;
-
-                position: absolute;
-                background: var(--main-orange);
-            }
-            .photo {
-                width: 310px;
-                height: 239.58px;
-
-                filter: grayscale(100%) brightness(200%) contrast(70%);
-                mix-blend-mode: multiply;
-            }
-        }
         }
 
         .project-name {
