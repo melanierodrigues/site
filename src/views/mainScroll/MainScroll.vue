@@ -2,6 +2,7 @@
   <!-- <div id="teste" class="main" v-dragscroll v-on:dragscrollstart="true" v-on:dragscrollmove="doSomething($event)" v-on:click="teste()">
     <little-apresentation />
     <about-me />
+    <project-base />
   </div> -->
   <!-- <about-me /> -->
   <!-- <little-apresentation /> -->
@@ -9,8 +10,8 @@
 </template>
   
 <script setup>
-import AboutMe from './AboutMe.vue'
-import LittleApresentation from './LittleApresentation.vue'
+// import AboutMe from './AboutMe.vue'
+// import LittleApresentation from './LittleApresentation.vue'
 import ProjectBase from './ProjectBase.vue'
 
 /* Vue */

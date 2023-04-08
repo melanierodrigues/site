@@ -2,9 +2,9 @@
     <div class="project-container">
         <!-- Main Content -->
         <div class="content">
-            <div v-if="props.images" class="images-projects" ref="testeM" @mouseover="mouseDownHandler">
+            <div v-if="props.images" class="images-projects" ref="imagesRef" @mouseover="mouseDownHandler" @mouseleave="mouseLeaveHandler">
                 <div v-for="(image, index) in props.images" :key="`images${index}`" class="photo-container">
-                    <div class="mask"></div>
+                    <div id="mask" class="mask"></div>
                     <img class="photo" :src="image.photo" />
                 </div>
             </div>
@@ -41,33 +41,34 @@ const props = defineProps({
     images: Array
 })
 
-const testeM = ref(null)
+const imagesRef = ref(null)
 
 let pos = { top: 0, left: 0, x: 0, y: 0 }
 
 const mouseDownHandler = function(e) {
-    testeM.value.scrollTop = 100
-    testeM.value.scrollLeft = 150
+    imagesRef.value.scrollTop = 100
+    imagesRef.value.scrollLeft = 150
 
     pos = {
         // The current scroll
-        left: testeM.value.scrollLeft,
-        top: testeM.value.scrollTop,
+        left: imagesRef.value.scrollLeft,
+        top: imagesRef.value.scrollTop,
         // Get the current mouse position
         x: e.clientX,
         y: e.clientY,
     }
 
-    // document.addEventListener('mousemove', mouseMoveHandler)
-    // document.addEventListener('mouseup', mouseUpHandler)
-
-    console.log('ver', testeM.value)
-
     // Change the cursor and prevent user from selecting the text
-    testeM.value.addEventListener('mousemove', mouseMoveHandler)
-    testeM.value.addEventListener('mouseup', mouseUpHandler)
-    // ele.style.cursor = 'grabbing'
-    // ele.style.userSelect = 'none'
+    imagesRef.value.addEventListener('mousemove', mouseMoveHandler)
+    imagesRef.value.addEventListener('mouseup', mouseUpHandler)
+    imagesRef.value.style.cursor = 'grabbing'
+    imagesRef.value.style.userSelect = 'none'
+
+    // Change the backgound of mask
+    const everyMask = document.querySelectorAll("#mask")
+    for (var i = 0; i < everyMask.length; i++) {
+        everyMask[i].style.background = 'white'
+    }
 }
 
 const mouseMoveHandler = function (e) {
@@ -76,16 +77,24 @@ const mouseMoveHandler = function (e) {
     const dy = e.clientY - pos.y
 
     // Scroll the element
-    testeM.value.scrollTop = pos.top - dy
-    testeM.value.scrollLeft = pos.left - dx
+    imagesRef.value.scrollTop = pos.top - dy
+    imagesRef.value.scrollLeft = pos.left - dx
 }
 
 const mouseUpHandler = function () {
     document.removeEventListener('mousemove', mouseMoveHandler)
     document.removeEventListener('mouseup', mouseUpHandler)
 
-    testeM.value.style.cursor = 'grab'
-    testeM.value.style.removeProperty('user-select')
+    imagesRef.value.style.cursor = 'grab'
+    imagesRef.value.style.removeProperty('user-select')
+}
+
+const mouseLeaveHandler = () => {
+    // Change the backgound of mask
+    const everyMask = document.querySelectorAll("#mask")
+    for (var i = 0; i < everyMask.length; i++) {
+        everyMask[i].style.background = 'var(--main-orange)'
+    }
 }
 </script>
 
@@ -111,6 +120,7 @@ const mouseUpHandler = function () {
 
             // overflow-x: auto;
             // cursor: grab;
+            overflow-y: hidden;
             overflow: auto;
             user-select: none;
 
@@ -128,6 +138,8 @@ const mouseUpHandler = function () {
 
                     position: absolute;
                     background: var(--main-orange);
+
+                    transition: all 0.8s ease-out 0.2s;
                 }
                 .photo {
                     width: 310px;
@@ -188,21 +200,7 @@ const mouseUpHandler = function () {
 }
 
 ::-webkit-scrollbar {
-    width: none;
-}
-
-::-webkit-scrollbar-track {
-    border-radius: 0px;
-    box-shadow: none;
-}
-
-::-webkit-scrollbar-thumb {
-    border-radius: 0px;
-    box-shadow: none;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background-color: transparent;
+    display: none;
 }
 </style>
   
