@@ -2,7 +2,7 @@
     <div class="project-container">
         <!-- Main Content -->
         <div class="content">
-            <div v-if="props.images" class="images-projects" ref="imagesRef" @mouseover="mouseDownHandler" @mouseleave="mouseLeaveHandler">
+            <div v-if="props.images" class="images-projects" ref="imagesRef" @mouseover="mouseDownHandler" @mousemove="mouseMoveHandler" @mouseup="mouseUpHandler" @mouseleave="mouseLeaveHandler">
                 <div v-for="(image, index) in props.images" :key="`images${index}`" class="photo-container">
                     <div id="mask" class="mask"></div>
                     <img class="photo" :src="image.photo" />
@@ -24,7 +24,6 @@
 
 <script setup>
 import Pills from '@/components/PillsBase.vue'
-// import ButtonBase from '../ButtonBase.vue'
 
 import { ref } from 'vue'
 
@@ -32,8 +31,11 @@ import { ref } from 'vue'
 @project { Object }
     - name { String }
     - description { String }
-@pills { Array }
-@images { Array }
+@pills { Array } - received objects
+    - firstText - label
+    - description
+@images { Array } - received objects
+    - photo
 */
 const props = defineProps({
     project: Object,
@@ -46,8 +48,8 @@ const imagesRef = ref(null)
 let pos = { top: 0, left: 0, x: 0, y: 0 }
 
 const mouseDownHandler = function(e) {
-    imagesRef.value.scrollTop = 100
-    imagesRef.value.scrollLeft = 150
+    // imagesRef.value.scrollTop = 100
+    // imagesRef.value.scrollLeft = 150
 
     pos = {
         // The current scroll
@@ -58,9 +60,6 @@ const mouseDownHandler = function(e) {
         y: e.clientY,
     }
 
-    // Change the cursor and prevent user from selecting the text
-    imagesRef.value.addEventListener('mousemove', mouseMoveHandler)
-    imagesRef.value.addEventListener('mouseup', mouseUpHandler)
     imagesRef.value.style.cursor = 'grabbing'
     imagesRef.value.style.userSelect = 'none'
 
@@ -111,15 +110,12 @@ const mouseLeaveHandler = () => {
         max-width: 610px;
         .images-projects {
             max-width: 610px;
-            height: 264px;
             margin-bottom: 47px;
 
             display: flex;
             flex-direction: row;
             gap: 24px;
 
-            // overflow-x: auto;
-            // cursor: grab;
             overflow-y: hidden;
             overflow: auto;
             user-select: none;
