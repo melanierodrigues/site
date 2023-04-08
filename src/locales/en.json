@@ -21,6 +21,9 @@
             "languagesTextRight": "Portuguese \n French \n English"
         }
     },
+    "activities": {
+        "title": "Activities"
+    },
     "littleApresentation": {
         "title": "Mélanie",
         "subtitle": "creative developer",

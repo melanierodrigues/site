@@ -6,13 +6,15 @@
   </div> -->
   <!-- <about-me /> -->
   <!-- <little-apresentation /> -->
-  <project-base />
+  <!-- <project-base /> -->
+  <activities-main-scroll />
 </template>
   
 <script setup>
 // import AboutMe from './AboutMe.vue'
 // import LittleApresentation from './LittleApresentation.vue'
-import ProjectBase from './ProjectBase.vue'
+// import ProjectBase from './ProjectBase.vue'
+import ActivitiesMainScroll from '../mainScroll/ActivitiesMainScroll.vue'
 
 /* Vue */
 import { ref } from 'vue'
